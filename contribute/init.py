@@ -14,6 +14,18 @@ def show_vote():
                            proposal='this is funny!')
 
 
+@app.route("/choose_project", methods=['GET'])
+def choose_project():
+    return render_template("choose_project.html",
+                           projects=['bob', 'ross'])
+
+
+@app.route("/new_entry/<name>", methods=['GET'])
+def create_entry(name):
+    return render_template("new_entry.html",
+                           project=name)
+
+
 @app.route("/vote/<how>", methods=['POST', 'PUT'])
 def retrieve_vote(how):
     voting = True
@@ -23,6 +35,7 @@ def retrieve_vote(how):
         voting = False
     else:
         return 'fuck off'
+
     # get current project and proposal
     # check for timeout
     return str(voting)

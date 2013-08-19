@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+Vote for '{{project}}'
+{% endblock %}
+{% block content %}
+<h1>Vote for '{{project}}'</h1>
+<div onclick='approve()'>Funny</div>
+<div onclick='reject()'>Lame</div>
+<!-- TODO: currently there is only text but we need to take care of funny audio -->
+<div>{{proposal}}</div>
+<div class='bob'></div>
+<script>
+function approve(){
+    $.post('vote/funny',function(data){ 
+            $(".bob").append("<p>response: "+data+ "</p>")})
+}
+function reject(){
+    $.post('vote/lame',function(data){ $(".bob").append("<p>response: "+data+ "</p>")})
+}
+</script>
+{% endblock %}

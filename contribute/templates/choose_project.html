@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+Please select the project you want to contribute
+{% endblock %}
+{% block content %}
+<h2>Please choose a project you want to contribute</h2>
+<ul>
+{% for project in projects %}
+    <li><a href="/new_entry/{{project}}">{{project}}</a></li> 
+{% endfor %}
+</ul>
+{% endblock %}
